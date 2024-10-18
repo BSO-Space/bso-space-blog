@@ -13,6 +13,7 @@ pipeline{
             steps{
                 script{
                     git branch: "${params.BRANCH_NAME}", url: "${GIT_URL}"
+                    
                     if ("${params.BRANCH_NAME}" != "main") {
                         error("This pipeline only runs on the main branch. Current branch: ${params.BRANCH_NAME}")
                     }
