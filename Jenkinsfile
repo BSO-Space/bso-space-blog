@@ -5,7 +5,7 @@ pipeline{
         GIT_URL='https://github.com/BSO-Space/bso-space-blog'
     }
     parameters {
-        string(name: 'BRANCH_NAME', defaultValue: 'main', description: 'Branch name for the build')
+        string(name: 'BRANCH_NAME', defaultValue: 'Pipline', description: 'Branch name for the build')
         string(name: 'DOCKER_TAG', defaultValue: 'latest', description: 'Docker image tag')
     }
     stages{
@@ -14,7 +14,7 @@ pipeline{
                 script{
                     git branch: "${params.BRANCH_NAME}", url: "${GIT_URL}"
                     
-                    if ("${params.BRANCH_NAME}" != "main") {
+                    if ("${params.BRANCH_NAME}" != "Pipline") {
                         error("This pipeline only runs on the main branch. Current branch: ${params.BRANCH_NAME}")
                     }
                     sh "git pull origin ${params.BRANCH_NAME}"
